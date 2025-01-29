@@ -55,7 +55,7 @@ public static void main(String[] args) {
             {
             data1=sc.nextInt();
             list.insertMiddle(data1,pos);
-            System.out.println("LINKED LIST AFTER INSERTING");
+            System.out.println("Element InsertedLINKED LIST AFTER INSERTING");
             list.displayList();
             }
             else
@@ -72,11 +72,27 @@ public static void main(String[] args) {
            }
         }
     }
-public void insertMiddle() 
-    {    
-//TYPE YOUR CODE HERE
+public void insertMiddle(int data, int pos) {  
+    Node newNode = new Node(data);
+    if (pos == 1) 
+    {  
+        newNode.next = head;
+        head = newNode;
+        return;
     }
-
+    Node temp = head;
+    for (int i = 1; i < pos - 1 && temp != null; i++) 
+    {  
+        temp = temp.next;
+    }
+    if (temp == null) 
+    {  
+        System.out.println("Invalid position");
+        return;
+    }
+    newNode.next = temp.next; 
+    temp.next = newNode;
+}
 public void displayList() {
         Node current = head;
         while (current != null) {
